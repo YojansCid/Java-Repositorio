@@ -69,27 +69,38 @@ public class Matrices {
     public static void imprimirFila(int a[][]){
         
         Scanner sc = new Scanner(System.in);
-        int fila =-1;
+        int fila =-1;//se usa como bandera (marcadpr de estado)
         
         do{
             try{
                 System.out.println("Ingrese que fila desea que se imprima (menor a 3 y mayor o igual a 0): ");
                 fila = sc.nextInt();
+                //intenta obtener los datos del teclado
             }catch(Exception e){
                 System.out.println("¡Cuidado! Solo puedes ingresar números. ");
+                //si ingresa un caracter que no sea numero es "atrapado" por el catch
                 sc.next();
             }
             
         }while( fila == -1 || ( fila < 0 || fila >= 3 ));
+        
+        /*mientras la bandera siga igual, osea que la variable fila no haya
+        cambiado o el numero ingresado sea igual o mayor a tres o sea inferior
+        a 0 el ciclo se repetira*/
+        
         for(int i=0;i<a.length;i++){
             for(int j = 0 ; j<a.length; j++){
                 if(i==fila){
+                    
+                    //imprime solo la fila indicada por el teclado
+                    
                     System.out.print("\t["+a[i][j]+"]");
                 }else{
                     System.out.print("\t[*]");
                 }
                 
 //con print no da un salto de linea y asi se puede ver de mejor manera la matriz
+
             }
             System.out.println("\n");
         }
@@ -100,6 +111,7 @@ public class Matrices {
         int columna =-1;
         
         do{
+            //ocupa  el mismo procedimiento que "ImprimirFila()"
             try{
                 System.out.println("Ingrese que fila desea que se imprima (menor a 3 y mayor o igual a 0): ");
                 columna = sc.nextInt();
