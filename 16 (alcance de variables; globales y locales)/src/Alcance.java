@@ -5,7 +5,7 @@
  */
 public class Alcance {
 
-    private int edad = 24;//variable Global
+    private int edad = 24;//variable GLOBAL
     
     public void mostrarEdad(){      
         System.out.println("Variable Global "+edad);
@@ -19,7 +19,9 @@ referencia la variable global ya inicializada (en el editor se puede notar el
 global, pero en este caso se toma en cuenta el valor dado de forma local, dentro
 de el metodo (23). Se puede ver en el editor el color amarillo de la variable al
  ser usada en el "println" al igual que en la inicializacion de mas arriba*/
-        int edad =23;
+
+        int edad =23;//variable LOCAL
+        
         System.out.println("Variable Local: "+edad);
     }
     
