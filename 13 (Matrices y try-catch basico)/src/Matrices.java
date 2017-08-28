@@ -33,10 +33,11 @@ public class Matrices {
         Scanner sc = new Scanner(System.in);
         for(int i=0;i<a.length;i++){
             for(int j=0;j<a.length;j++){
-                
                 a[i][j]=-1;
+        //bandera o indicador de estado
                 do{
                     try{
+        // se usa para asegurar que se ingresen numeros en la matriz
                         System.out.println("Ingrese el numero para la FILA numero ["+i+"] y la COLUMNA ["+j+"]");
                         a[i][j]=sc.nextInt();
                     }catch(Exception e){
