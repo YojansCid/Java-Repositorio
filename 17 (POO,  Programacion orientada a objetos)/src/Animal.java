@@ -45,6 +45,10 @@ public class Animal {
             this.dueño = false;
             this.id_animal = this.id++;
         }
+        
+        
+        
+        
 
 
         public String getNombre() {
