@@ -9,6 +9,8 @@
  *
  * @author Yojans Cid
  */
+
+/**Comentarios en la Clase Gato, ya que son identicos a los de perro*/
 public class Perro extends Animal{
     
     private int huesos_comidos;

@@ -9,10 +9,15 @@
  *
  * @author Yojans Cid
  */
+//HERENCIA
+/*Esta clase extiende de "Animal", o sea, hereda de la clase Animal, pudiendo
+ahora usar todos los atributos y metodos de la clase "padre" "Animal". Este es un
+principio de la programacion orientada a objetos; HERENCIA**/
 public class Gato extends Animal{
-    
+    //**La clase Gato toene un atributo*/
     private int pajaros_cazados;
-
+/**Tiene un par de constructores, lo que hace que se pueda instanciar con 
+ * diferentes tipos de llamada y/o entrega y orden de parametros (POLIMORFISMO)*/
     public Gato(String nombre, boolean dueño) {
         super(nombre, dueño, "GATO");
     }
@@ -31,11 +36,11 @@ public class Gato extends Animal{
         this.setTipo("GATO");
     }
     
-  
+/**Un metodo que solo esta clase puede utilizar*/  
     public void maullar(){
         System.out.println("miaaauuuu!!");
     }
-
+/**Metodos set() y get() (ENCAPSULAMIENTO)*/
     public int getPajaros_cazados() {
         return pajaros_cazados;
     }
@@ -46,7 +51,7 @@ public class Gato extends Animal{
 
     
     
-    
+/**Override de metodo toString() para imprimir los datos del objeto en forma de String*/    
     @Override
     public String toString(){
         return "ID: " + this.getId_animal() + "\tNombre: " + this.getNombre() + "\tTipo: "
