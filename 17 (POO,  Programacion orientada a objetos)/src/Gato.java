@@ -37,7 +37,9 @@ public class Gato extends Animal{
     }
     
 /**Un metodo que solo esta clase puede utilizar*/  
-    public void maullar(){
+    
+    @Override
+    public void hablar(){
         System.out.println("miaaauuuu!!");
     }
 /**Metodos set() y get() (ENCAPSULAMIENTO)*/

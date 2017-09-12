@@ -34,7 +34,8 @@ public class Perro extends Animal{
     }
     
   
-    public void ladrar(){
+    @Override
+    public void hablar(){
         System.out.println("waaaaaauuu!!");
     }
 

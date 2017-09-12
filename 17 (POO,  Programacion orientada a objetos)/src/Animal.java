@@ -19,7 +19,12 @@ programacion solido y lleno de buenas practicas*/
 
 /*constructores: Sirven para instanciar un nuevo objeto de la clase; es el metodo
 que inicializa las variables a utilizar por un objeto*/
-public class Animal {
+
+public abstract  class  Animal {
+    
+/*esta clase es ABSTRACT ya que uno de los metodos no se crea sino que solo se 
+    "declara" y se obliga asi a implemetar y/o hacer un @Override de los metodos
+    en los hijos de dicha herencia*/
 
     /**
      * @param args the command line arguments
@@ -62,7 +67,9 @@ public class Animal {
             this.id_animal = this.id++;
         }
         
-        
+        public abstract void hablar();
+        /** Metodo que es solo declarado por lo que la crecion de este se hace 
+         * en los hijos de esta clase*/
         
         
 
@@ -134,91 +141,6 @@ public class Animal {
         }
 
 
-//Metodo  Main
-        public static void main(String[] args) {
-//Se inicializa un objeto tipo Scanner            
-            Scanner sc = new Scanner(System.in);
-            int num_animales = -1;//Bandera o indicador de estados
- 
-            
- //Se hace un TryCatch dentro de un doWhile para asegurar que lo ingresado sea un numero          
-                do{
-                   try{ 
-                        System.out.println("Indique el numero de Animales que desea ingresar: ");
-                        num_animales = sc.nextInt();
-                    
-                    
-                    }catch(Exception e){
-                        System.out.println("¡Cuidado!, Ingrese un numero");
-                        sc.next();
-                    }
-                    
-//si la bandera no cambia, entonces sigue dentro del ciclo DoWhile                    
-                }while(num_animales == -1);
 
-/**Se crea un Array de Animales con capacidad ingresada desde teclado*/                
-            Animal animales[] = new Animal[num_animales];
-            
-/**Se ingresan los dastos del animal, hasta que se llenen n (Dato ingresado por teclado) animales y se agreguen al Array*/            
-            for(int i = 0; i<num_animales; i++){
-                Animal c = new Animal();
-                System.out.println("Ingrese el nombre del animal (" + (i+1) + "): ");
-                c.setNombre(sc.next());
-                System.out.println("Ingrese el tipo del animal (" + (i+1) + "): ");
-                c.setTipo(sc.next());
-                System.out.println("Ingrese el si es que tiene dueño el animal (" + (i+1) + "): (si/no)");
-                if(sc.next().equalsIgnoreCase("si") || sc.next().equalsIgnoreCase("yes")){
-                    c.setDueño(true);
-                }
-                animales[i] = c;
-            }
-/**Imprime los animales (los datos o atributos) que estan dentro del array*/           
-            for (Animal animal : animales) {
-                System.out.println(animal.toString());
-            }
-            
-            System.out.println("--------------------------------------------");
-           
-            System.out.println("Instanciacion de perros: ");
-            
-/**Se instancian Perros con diferentes constructores (principio de POLIMORFISMO)*/            
-            Perro perro = new Perro("Shopper", true,  10);
-            Perro perro2 = new Perro("Shopper", true);
-            Perro perro3 = new Perro(5);
-            Perro perro4 = new Perro();
-/**Imprime los datos de cada "perro" en forma de String */            
-            System.out.println(perro.toString());
-            System.out.println(perro2.toString());
-            System.out.println(perro3.toString());
-            System.out.println(perro4.toString());
-/**Se ejecuta un metodo en cual solo los perros pueden utilizar (ladrar())*/            
-            perro.ladrar();
-            
-            System.out.println("--------------------------------------------");
-            
-            System.out.println("Instanciacion de gatos: ");
-/**Se instancian "gatos" con diferentes constructores (principio de POLIMORFISMO)*/             
-            Gato gato = new Gato("Plata", true,  24);
-            Gato gato2 = new Gato("Plata", true);
-            Gato gato3 = new Gato(7);
-            Gato gato4 = new Gato();
-            Gato gato5 = new Gato();
-/**Imprime los datos de cada "gato" en forma de String */            
-            System.out.println(gato.toString());
-            System.out.println(gato2.toString());
-            System.out.println(gato3.toString());
-            System.out.println(gato4.toString());
-/**Se ejecuta un metodo en cual solo los gatos pueden utilizar (maullar())*/              
-            gato.maullar();
-            
-           
-            
-            
-            
-            
-
-
-
-        }
     
 }
