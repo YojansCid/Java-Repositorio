@@ -20,11 +20,11 @@ public class Animal {
         this.nombre = nombre;
     }
     
-/**Metodo que es parte de la instancia de un objeto*/   
+/*Metodo que es parte de la instancia de un objeto*/   
     public void rugirDeInstancia(){
         System.out.println("El animal "+ this.nombre+ " esta rugiendo!");
     }
-/**Metodo que es parte de la clase al ser STATIC. No es necesario tener un objeto instanciado */    
+/*Metodo que es parte de la clase al ser STATIC. No es necesario tener un objeto instanciado */    
     public static void rugirDeClase(){
         System.out.println("El Animal esta Rugiendo!!");
     }

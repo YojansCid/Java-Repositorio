@@ -68,7 +68,7 @@ public abstract  class  Animal {
         }
         
         public abstract void hablar();
-        /** Metodo que es solo declarado por lo que la crecion de este se hace 
+        /* Metodo que es solo declarado por lo que la crecion de este se hace 
          * en los hijos de esta clase*/
         
         

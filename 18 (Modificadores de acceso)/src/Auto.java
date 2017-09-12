@@ -10,7 +10,7 @@
  */
 public class Auto {
 
-/**Los atributos tienen el modificador de acceso PRIVATE por lo que solo pueden 
+/*Los atributos tienen el modificador de acceso PRIVATE por lo que solo pueden 
  * ser accedidos por la clase, para tener control de estos  atributis desde afuera 
  * de la clase se usan los metodos Set() y Get()*/
     
@@ -19,7 +19,7 @@ public class Auto {
     protected String color;//se puede tener acceso solo si existe herencia
     int asientos; //default o package, puede ser accedido por parte del paquete en el que se encuentra el proyecto
 
-/**El constructor tiene el tipo de modificador de acceso PUBLIC ya que asi puede
+/*El constructor tiene el tipo de modificador de acceso PUBLIC ya que asi puede
 ser utilizado fuera de la clase, se puede tener acceso a los metodos y/o atributos*/    
     
     public Auto(int ruedas, int puertas, String color) {
