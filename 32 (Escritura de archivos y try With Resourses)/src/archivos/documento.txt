@@ -1,0 +1,2 @@
+Escrito desde JAVA por Yojans
+Texto agregado, no sobreescrito!
