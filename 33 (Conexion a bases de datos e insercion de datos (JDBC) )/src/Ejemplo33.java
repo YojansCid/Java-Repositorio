@@ -78,17 +78,32 @@ public class Ejemplo33 {
                     + fecha_nac + "' , '"  + sexo + "' , '"  + telefono + "' , '"
                     + email + "' , '"  + puntos + "')";
             
+            String query2 = "INSERT INTO PERSONA(nombre,fecha_nacimiento, sexo, "
+                    + "telefono, email, puntos) values( (?)  , (?) , (?) , (?) , (?) , (?))";
+            
+            
+            
             /*Imprime la consulta en fomra de String*/
             System.out.println(query);
+            System.out.println(query2);
             /*Se seclara unavariable tipo PrepareStatement que prepara la 
             sentencia para ser procesada por la BD, dandole como parametro el 
             "INSERT" anteriormente hecho*/
             
             PreparedStatement st  = conexion.prepareStatement(query);
+            PreparedStatement st2  = conexion.prepareStatement(query2);
+            
+            st2.setString(1, nombre);
+            st2.setString(2, fecha_nac);
+            st2.setString(3, sexo);
+            st2.setString(4, telefono);
+            st2.setString(5, email);
+            st2.setString(6, puntos);
+            
             
             /*Para que se ejecute el Statement o la sentencia se utiliza el 
             metodo "executeUpdate()"*/
-            st.executeUpdate();
+            st2.executeUpdate();
             
             /*Se cierra el Statement para liberar recursos*/
             st.close();
