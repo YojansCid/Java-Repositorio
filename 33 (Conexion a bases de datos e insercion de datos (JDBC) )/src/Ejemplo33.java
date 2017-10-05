@@ -73,7 +73,10 @@ public class Ejemplo33 {
             
             /*Se crea un un insert para la base de datos con los datos ingresados
             por  teclado*/
-            String query = "INSERT INTO PERSONA(nombre,fecha_nacimiento, sexo, telefono, email, puntos) values('" + nombre + "' , '" + fecha_nac + "' , '"  + sexo + "' , '"  + telefono + "' , '"  + email + "' , '"  + puntos + "')";
+            String query = "INSERT INTO PERSONA(nombre,fecha_nacimiento, sexo, "
+                    + "telefono, email, puntos) values('" + nombre + "' , '" 
+                    + fecha_nac + "' , '"  + sexo + "' , '"  + telefono + "' , '"
+                    + email + "' , '"  + puntos + "')";
             
             /*Imprime la consulta en fomra de String*/
             System.out.println(query);

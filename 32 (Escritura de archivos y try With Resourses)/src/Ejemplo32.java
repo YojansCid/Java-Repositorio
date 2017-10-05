@@ -28,7 +28,9 @@ public class Ejemplo32 {
         try {
             /*Se instancia el objeto FileWriter, dandole la ruta en donde se 
             encuentra el archivo como parametro del metodo*/
-            archivo = new FileWriter("C:\\Users\\Yojans Cid\\Desktop\\Proyectos JAVA\\JavaTutoriales\\32 (Escritura de archivos)\\src\\archivos\\documento.txt");
+            archivo = new FileWriter("C:\\Users\\Yojans Cid\\Desktop\\Proyectos "
+                    + "JAVA\\JavaTutoriales\\32 (Escritura de archivos)\\src\\"
+                    + "archivos\\documento.txt");
             
             /*Se instancia el objeto PrinterWriter, dandole el objeto FileWriter como parametro*/
             printer = new PrintWriter(archivo);
@@ -39,7 +41,9 @@ public class Ejemplo32 {
             /*Si el archivo ya existe y se quiere agregar una linea y no 
             sobreescribir estas se agrega como parametro un boolean true al 
             instanciar el FileWriter*/
-            //archivo = new FileWriter("C:\\Users\\Yojans Cid\\Desktop\\Proyectos JAVA\\JavaTutoriales\\32 (Escritura de archivos)\\src\\archivos\\documento.txt",true);
+            archivo = new FileWriter("C:\\Users\\Yojans Cid\\Desktop\\Proyectos "
+                    + "JAVA\\JavaTutoriales\\32 (Escritura de archivos)\\src\\"
+                    + "archivos\\documento.txt",true);
 
             
         } catch (Exception e) {
@@ -63,8 +67,11 @@ public class Ejemplo32 {
         y al final de el bloque libera el recurso, ahorrandose el uso de del bloque
         FINALLY y asi hacer que el programa maneje los recursos mas eficasmente*/
         
-        //ruta entregada con la ruta del archivo y un valor boolean TRUE, esto agrega texto, no lo sobreescribe
-        try (FileWriter archivo2 = new FileWriter("C:\\Users\\Yojans Cid\\Desktop\\Proyectos JAVA\\JavaTutoriales\\32 (Escritura de archivos)\\src\\archivos\\documento.txt" , true)){
+        /*ruta entregada con la ruta del archivo y un valor boolean TRUE, esto 
+        agrega texto, no lo sobreescribe*/
+        try (FileWriter archivo2 = new FileWriter("C:\\Users\\Yojans Cid\\Desktop"
+                + "\\Proyectos JAVA\\JavaTutoriales\\32 (Escritura de archivos)"
+                + "\\src\\archivos\\documento.txt" , true)){
             
             
            
