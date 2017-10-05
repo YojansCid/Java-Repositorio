@@ -73,11 +73,19 @@ public class Ejemplo33 {
             
             /*Se crea un un insert para la base de datos con los datos ingresados
             por  teclado*/
+            
+            /*Existen diferentes formas de formular una consulta:*/
+            
+            //La 1° concatenando todo en un String y dandoselo a PrepareStatement
             String query = "INSERT INTO PERSONA(nombre,fecha_nacimiento, sexo, "
                     + "telefono, email, puntos) values('" + nombre + "' , '" 
                     + fecha_nac + "' , '"  + sexo + "' , '"  + telefono + "' , '"
                     + email + "' , '"  + puntos + "')";
             
+            
+            /*La 2° haciendo que los datos sean reemplazados por el simbolo de 
+            igual entre parentesis (?) y usar el metodo que proporciona PrepareStatement
+            para cambiar esos simbolor por los que se necesitan*/
             String query2 = "INSERT INTO PERSONA(nombre,fecha_nacimiento, sexo, "
                     + "telefono, email, puntos) values( (?)  , (?) , (?) , (?) , (?) , (?))";
             
@@ -85,14 +93,18 @@ public class Ejemplo33 {
             
             /*Imprime la consulta en fomra de String*/
             System.out.println(query);
-            System.out.println(query2);
+            
             /*Se seclara unavariable tipo PrepareStatement que prepara la 
             sentencia para ser procesada por la BD, dandole como parametro el 
             "INSERT" anteriormente hecho*/
             
-            PreparedStatement st  = conexion.prepareStatement(query);
+            //PreparedStatement st  = conexion.prepareStatement(query);
             PreparedStatement st2  = conexion.prepareStatement(query2);
             
+            
+            /*Aqui se cambian los datos por los que necesitamos con el numero 
+            correlativo a los simbolos (?). Asi el primero se cambiara por el 
+            valor de nombre, el segundo por el de fecha_nac y asi sucesivamente*/
             st2.setString(1, nombre);
             st2.setString(2, fecha_nac);
             st2.setString(3, sexo);
@@ -103,10 +115,14 @@ public class Ejemplo33 {
             
             /*Para que se ejecute el Statement o la sentencia se utiliza el 
             metodo "executeUpdate()"*/
+            
+            
+            //st.executeUpdate();
             st2.executeUpdate();
             
             /*Se cierra el Statement para liberar recursos*/
-            st.close();
+            //st.close();
+            st2.close();
             
         } catch (Exception e) {
             
