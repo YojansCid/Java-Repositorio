@@ -22,9 +22,22 @@ public class Ejemplo33 {
     /*En el uso de la API que proporciona JAVA llamada JDBC (Java Data Base 
     Connectivity) 
     ayuda a interactuar con diferentes bases de datos como por ejemplo mySql, 
-    PostgreSQL, SQL Server, etc. Para que el programa funcione es necesario crear
+    PostgreSQL, SQL Server, etc. 
+    
+    Para que el programa funcione es necesario crear
     una BD postgreSQL en nuestro PC con los nombres especificados o de otra 
-    forma cambiar los nombres de los atributos, etc desde el codigo*/
+    forma cambiar los nombres de los atributos, etc desde el codigo.
+    
+    La tabla creada tiene como nombre "persona" y dicha tabla tiene 7 columnas, 
+    estas son : id, nombre, fecha_nacimiento, sexo, email y puntos. Todos de 
+    tipo Character,esto por metodos de demostracion, ya que en java pueden ser 
+    tratados como String
+    
+    Ademas es necesario descargar la libreria necesaria para (en este caso) trabajar 
+    conPostgres, llamada: postgresql-9.4-1201-jdbc41.jar
+    e importarla en el proyecto. Para hacer esto se presiona click derecho en el
+    proyecto y se dirige a la seccion de propiedades y presionar el boton de 
+    agregar Jar, se elige la libreria y se agrega*/
     public static void main(String[] args) {
         
         
