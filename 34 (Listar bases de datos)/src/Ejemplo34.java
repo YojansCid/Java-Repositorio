@@ -2,6 +2,9 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -83,8 +86,62 @@ public class Ejemplo34 {
     }
     
     
-    public void listar(){
+    public List<Persona> listar(){
+       
+        List <Persona> listaPersona = null; 
+        //Distingue que base de datos vamos a utilizar
+        final String JDBC_DRIVER = "org.postgresql.Driver"; //com.mysql.jdbc.Driver
         
+        //Ruta en la cual se hace la conexion a la BD llamada "Clientes"
+        final String DB_URL = "jdbc:postgresql://localhost:5432/Clientes"; //com.mysql.jdbc.Driver
+              
+        //----------------------------------------------------------------------
+        //Base de datos credenciales
+        
+        //usuario de la BD
+        final String USER = "postgres";
+        //password de la BD
+        final String PASS = "postgres123";
+        
+        try ( Connection conexion = DriverManager.getConnection(DB_URL, USER, PASS)){
+            Class.forName(JDBC_DRIVER);
+                      
+            String query = "SELECT * FROM PERSONA";
+        
+            PreparedStatement st  = conexion.prepareStatement(query);
+
+            /*Para que se ejecute el Statement con el INSERT en la BD se utiliza
+            el metodo "executeQuery() que devuelve un tipo de dato "ResultSet" */
+
+            ResultSet rs = st.executeQuery();
+            
+            listaPersona = new ArrayList();
+            while (rs.next()) {
+
+                Persona persona = new Persona();
+                persona.setId(rs.getInt("id"));
+                persona.setNombre(rs.getString("nombre"));
+                
+                listaPersona.add(persona);
+                
+                
+                
+            }
+            
+            /*Se cierra el Statement y el ResultSet para liberar recursos*/
+            
+            
+            st.close();
+            rs.close();
+            
+        } catch (Exception e) {
+            
+            /*Imprime el mensaje de la exceptions correspondiente si ocurre 
+            un error*/ 
+            System.out.println(e.getMessage());
+        }
+        
+        return listaPersona;
     }
     
     
@@ -122,22 +179,34 @@ public class Ejemplo34 {
                    String nombre = sc.next();
                    ej.insertar(nombre);
                    break;
+                   
                 case "2":
                     System.out.println("Se LISTARA la BD");
+                    List<Persona> listaBD = ej.listar();
+                    
+                    System.out.println("[ ID ] - [ NOMBRE ]");
+                    for (Persona persona : listaBD) {
+                        
+                        System.out.println("[" + persona.getId() + "] - [" + persona.getNombre() + "]");
+                    }
                    break;
+                   
                 case "3":
                    System.out.println("Se MODIFICARA un nombre de la BD");
                    break;
+                   
                 case "4":
                    System.out.println("Se ELIMINARA un nombre de la BD");
                    break;
                 case "5":
                    System.out.println("Se ELIMINARA TODA la BD. CUIDADO!");
                    break;
+                   
                 case "0":
                    System.out.println("SALIENDO...");
                    System.exit(0);
                    break;
+                   
                 default:
                    System.out.println("Opcion ingresada NO VALIDA");
                    break;
