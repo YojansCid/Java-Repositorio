@@ -85,7 +85,8 @@ public class Ejemplo34 {
         
     }
     
-    
+    /*Se crea un metodo que lista todos los datos de la BD, que retorna una 
+    lista de objetos de tipo perosna*/
     public List<Persona> listar(){
        
         List <Persona> listaPersona = null; 
@@ -105,9 +106,12 @@ public class Ejemplo34 {
         
         try ( Connection conexion = DriverManager.getConnection(DB_URL, USER, PASS)){
             Class.forName(JDBC_DRIVER);
-                      
+            
+            /*Se crea una consulta de SQL que trae todos los datos (los nombres) de la BD*/          
             String query = "SELECT * FROM PERSONA";
         
+            /*Se crea un PreparedStatement y se le da como parametro la Query 
+            creada*/
             PreparedStatement st  = conexion.prepareStatement(query);
 
             /*Para que se ejecute el Statement con el INSERT en la BD se utiliza
@@ -115,13 +119,26 @@ public class Ejemplo34 {
 
             ResultSet rs = st.executeQuery();
             
+            /*Se crea una lista para que contenga todos los objetos de tipo 
+            Persona, estos son llenados con los datos traidos desde la BD */
             listaPersona = new ArrayList();
+            
+            /*Mientras exista un proximo resultado de la obtencion de datos el 
+            ciclo sigue creando y llenando los objetos de tipo persona con los 
+            datos traidos desde la BD*/
+            
             while (rs.next()) {
 
-                Persona persona = new Persona();
+                Persona persona = new Persona();//se crea el objeto
+                
+                /*se setea el id y el nombre de la nueva persona (el objeto) con
+                el metodo getInt y getString con lo que trae el registro desde 
+                la BD*/
                 persona.setId(rs.getInt("id"));
                 persona.setNombre(rs.getString("nombre"));
                 
+                
+                /*Se agrega el nuevo objeto a la lista creada anteriormente*/
                 listaPersona.add(persona);
                 
                 
@@ -130,7 +147,7 @@ public class Ejemplo34 {
             
             /*Se cierra el Statement y el ResultSet para liberar recursos*/
             
-            
+            //se cierra el Statement y el ResultSet para ahorrar recursos
             st.close();
             rs.close();
             
@@ -141,24 +158,29 @@ public class Ejemplo34 {
             System.out.println(e.getMessage());
         }
         
+        //Se retorna la lista llenada con objetos de tipo persona
         return listaPersona;
     }
     
     
     public void eliminar(String nombre){
-        
+        //se implementara un metodo que elimine UN registro de la BD
     }
     
     public void modificar(String nombre){
-        
+        //se implementara un metodo que modifique UN registro de la BD
     }
     
     public static void main(String[] args) {
         
-        Ejemplo34 ej = new Ejemplo34();
-        String opcion;
-        Scanner sc = new Scanner(System.in);
+        /*Se crea un objeto de tipo Ejemplo34, para usar los metodos de este 
+        programa*/
         
+        Ejemplo34 ej = new Ejemplo34();
+        String opcion;//Opcion a ingresar por teclado
+        
+        //objeto que recibira datos ingresados por teclado
+        Scanner sc = new Scanner(System.in);
  
         do{
             
@@ -212,7 +234,9 @@ public class Ejemplo34 {
                    break;
 
             }
-        }while( opcion != "0");    
+            
+        //el ciclo se repetira mientras la opcion sea diferente a 0
+        }while( opcion != "0");
         
     }
     
