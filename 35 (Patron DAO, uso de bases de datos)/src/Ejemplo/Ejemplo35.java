@@ -43,7 +43,7 @@ public class Ejemplo35 {
                 case "1":
                    System.out.println("Se INSERTARA un nombre en la BD");
                    System.out.println("Ingrese un nombre para  agregar a la BD.");
-                   String nombre = sc.next();
+                   String nombre = sc.nextLine();
                    Persona p = new Persona();
         
                    p.setNombre(nombre);
@@ -67,7 +67,7 @@ public class Ejemplo35 {
                    
                    System.out.println("Ingrese el nuevo nombre.");
                    
-                   String nombreNuevo = sc.next();
+                   String nombreNuevo = sc.nextLine();
                    
                    p2.setNombre(nombreModificar);
                    
@@ -99,7 +99,21 @@ public class Ejemplo35 {
                    break;   
                    
                 case "4":
+                    
                    System.out.println("Se ELIMINARA un nombre de la BD");
+                   System.out.println("Ingrese el nombre que desea ELIMINAR");
+                   String nombreEliminar = sc.next();
+                   
+                   Persona per = new Persona();
+                   per.setNombre(nombreEliminar);
+                   
+                    try {
+                        DAOPersona daoPersona = new DAOPersonaImp();
+                        daoPersona.eliminar(per);
+                    } catch (Exception e) {
+                        System.out.println(e.getMessage());
+                    }
+                   
                    break;
                 case "5":
                    System.out.println("Se ELIMINARA TODA la BD. CUIDADO!");

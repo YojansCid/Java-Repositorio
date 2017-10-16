@@ -58,8 +58,8 @@ public class DAOPersonaImp extends Conexion implements DAOPersona{
         
         try {
             this.conectar();
-            PreparedStatement ps = this.conexion.prepareStatement("DELETE FROM PERSONA  WHERE id = ?");
-            ps.setInt(1, per.getId());
+            PreparedStatement ps = this.conexion.prepareStatement("DELETE FROM PERSONA  WHERE nombre = ?");
+            ps.setString(1, per.getNombre());
             ps.executeUpdate();
         } catch (Exception e) {
             
