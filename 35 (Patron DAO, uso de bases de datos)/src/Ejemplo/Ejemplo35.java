@@ -37,7 +37,7 @@ public class Ejemplo35 {
             System.out.println("5: Eliminar TODA la BD. CUIDADO!!");
             System.out.println("0: Salir.");
             
-            opcion = sc.next();
+            opcion = sc.nextLine();
             switch(opcion){
 
                 case "1":
@@ -63,7 +63,7 @@ public class Ejemplo35 {
                    System.out.println("Se MODIFICARA un nombre de la BD");
                    System.out.println("Ingrese el nombre que desea modificar.");
                    
-                   String nombreModificar = sc.next();
+                   String nombreModificar = sc.nextLine();
                    
                    System.out.println("Ingrese el nuevo nombre.");
                    
@@ -87,8 +87,12 @@ public class Ejemplo35 {
                         DAOPersona daoPer = new DAOPersonaImp();
                     
                         List<Persona> listaBD = daoPer.listar();
-
-                        System.out.println("[ ID ] - [ NOMBRE ]");
+                        if (listaBD != null) {
+                            System.out.println("NO EXISTEN DATOS REGISTRADOS");
+                        }else{
+                            System.out.println("[ ID ] - [ NOMBRE ]");
+                        }
+                        
                         for (Persona persona : listaBD) {
                         
                         System.out.println("[ " + persona.getId() + " ] - [ " + persona.getNombre() + " ]");
@@ -102,7 +106,7 @@ public class Ejemplo35 {
                     
                    System.out.println("Se ELIMINARA un nombre de la BD");
                    System.out.println("Ingrese el nombre que desea ELIMINAR");
-                   String nombreEliminar = sc.next();
+                   String nombreEliminar = sc.nextLine();
                    
                    Persona per = new Persona();
                    per.setNombre(nombreEliminar);
