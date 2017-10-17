@@ -10,6 +10,10 @@ package Ejemplo;
  *
  * @author Yojans Cid
  */
+/*Esta clase  sera la que "simulara" la tabla de la BD en forma de objeto y asi 
+poder manejar los diferentes aspectos del programa. El objeto al igual que la 
+Tabla en la BD a utilizar contiene un ID y un NOMBRE y sus respectivos get()
+y set()*/
 public class Persona {
     
     int id;

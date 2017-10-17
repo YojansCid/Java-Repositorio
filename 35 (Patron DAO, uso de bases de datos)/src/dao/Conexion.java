@@ -7,7 +7,6 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 /**
@@ -34,7 +33,8 @@ public class Conexion {
     
     protected Connection conexion;
     
-    
+    /*Se crea un metodo que use las credenciales entregadas y se conecte a la 
+    base de datos*/
     public void conectar() throws Exception{
         
         try {
@@ -48,11 +48,12 @@ public class Conexion {
         
     }
     
+    /*Se crea un metodo que cierre la conexion de la BD*/
     public void cerrar() throws SQLException{
         
-        if(conexion != null){
-            if(!conexion.isClosed()){
-                conexion.close();
+        if(conexion != null){//si la conexion es diferente de nula, osea, existe
+            if(!conexion.isClosed()){//...y no esta cerrada
+                conexion.close();//se cierra la conexion
             }
         }
         

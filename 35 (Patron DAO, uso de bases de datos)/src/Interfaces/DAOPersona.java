@@ -10,8 +10,12 @@ import java.util.List;
  *
  * @author Yojans Cid
  */
+/*La siguiente interface declarara los metodos que seran implementados por la 
+clase DAOPersonaImp, esto se usa algo asi como una plantilla con los metodos que
+deben usarse a la hora del manejo de la BD*/
 public interface DAOPersona {
     
+    /*Cada nombre de los metodos es autoexplicativo con lo que hara en la BD*/
     
     public void registrar(Persona per) throws Exception;
     public void modificar(Persona per, String nombre) throws Exception;

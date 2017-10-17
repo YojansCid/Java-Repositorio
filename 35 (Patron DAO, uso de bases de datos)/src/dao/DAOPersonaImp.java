@@ -3,6 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/*Se integra el paquete "dao a la clase"*/
 package dao;
 
 import Ejemplo.Persona;
@@ -16,15 +17,26 @@ import java.util.List;
  *
  * @author Yojans Cid
  */
+/*La iguiente Clase Extendera de la Clase Conexion (sera hijo) y tomara todos 
+los metodos que este contiene (conectar() y cerrar()), ademas de usar la 
+interface DAOPersona que nos "obligara" a implementar (@Override) los metodos 
+especificados en esa interface (registrar(), modificar(), eliminar(), listar()
+ y eliminarTodaBD())*/
 public class DAOPersonaImp extends Conexion implements DAOPersona{
 
     @Override
     public void registrar(Persona per) throws Exception {
         
         try {
+            /*Dentro del try, ya que puede existir una excepcion al tratar de 
+            conectar a la BD, se usa el metodo conectar() que proporciona el 
+            padre(Conexion)*/
             this.conectar();
+            /*Se prepara el Statement con la consulata a realizar*/
             PreparedStatement ps = this.conexion.prepareStatement("INSERT INTO PERSONA (nombre) VALUES (?)");
+            /*Se reemplaza el signo (?)  con el metodo setString()*/
             ps.setString(1, per.getNombre());
+            /*Se ejecuta la consulta*/
             ps.executeUpdate();
         } catch (Exception e) {
             
@@ -40,14 +52,20 @@ public class DAOPersonaImp extends Conexion implements DAOPersona{
         
         try {
             this.conectar();
+            /*Se prepara el Statement con la consulata a realizar*/
             PreparedStatement ps = this.conexion.prepareStatement("UPDATE PERSONA SET nombre = ? WHERE nombre = ?");
+            /*Se reemplaza el signo (?)  con el metodo setString()*/
             ps.setString(1, nombre);
+            /*Se reemplaza el signo (?)  con el metodo setString() por el nombre
+            ingresado por teclado*/
             ps.setString(2, per.getNombre());
+            /*Se ejecuta la consulta*/
             ps.executeUpdate();
         } catch (Exception e) {
-            
+            /*Se lanza el posible error a una "capa" superior*/
             throw e;
         }finally{
+            /*Se usa el metodo que proporciona el "Padre" cerrar() */
             this.cerrar();
         }
         
@@ -58,13 +76,16 @@ public class DAOPersonaImp extends Conexion implements DAOPersona{
         
         try {
             this.conectar();
+            /*Se prepara el Statement con la consulata a realizar*/
             PreparedStatement ps = this.conexion.prepareStatement("DELETE FROM PERSONA  WHERE nombre = ?");
             ps.setString(1, per.getNombre());
+            /*Se ejecuta la consulta*/
             ps.executeUpdate();
         } catch (Exception e) {
-            
+            /*Se lanza el posible error a una "capa" superior*/
             throw e;
         }finally{
+            /*Se usa el metodo que proporciona el "Padre" cerrar() */
             this.cerrar();
         }
         
@@ -77,8 +98,9 @@ public class DAOPersonaImp extends Conexion implements DAOPersona{
         try {
             lista = new ArrayList<>();
             this.conectar();
+            /*Se prepara el Statement con la consulata a realizar*/
             PreparedStatement ps = this.conexion.prepareStatement("SELECT * FROM PERSONA");
-            
+            /*Se ejecuta la consulta*/
             ResultSet rs = ps.executeQuery();
                 
             while(rs.next()){
@@ -88,17 +110,20 @@ public class DAOPersonaImp extends Conexion implements DAOPersona{
                 lista.add(p);
             }
             
+            /*Se cierra el ResultSet y el PrepareStatement para libertar 
+            recursos*/
             rs.close();
             ps.close();
             
             
         } catch (Exception e) {
-            
+            /*Se lanza el posible error a una "capa" superior*/
             throw e;
         }finally{
+            /*Se usa el metodo que proporciona el "Padre" cerrar() */
             this.cerrar();
         }
-        
+        /*Se retorna la lista llenada con objetos tipo persona*/
         return lista;
         
     }
@@ -108,12 +133,15 @@ public class DAOPersonaImp extends Conexion implements DAOPersona{
         
         try {
             this.conectar();
+            /*Se prepara el Statement con la consulata a realizar*/
             PreparedStatement ps = this.conexion.prepareStatement("DELETE FROM PERSONA");
+            /*Se ejecuta la consulta*/
             ps.executeUpdate();
         } catch (Exception e) {
-            
+            /*Se lanza el posible error a una "capa" superior*/
             throw e;
         }finally{
+            /*Se usa el metodo que proporciona el "Padre" cerrar() */
             this.cerrar();
         }
         
