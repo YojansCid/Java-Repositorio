@@ -16,6 +16,7 @@ public interface DAOPersona {
     public void registrar(Persona per) throws Exception;
     public void modificar(Persona per, String nombre) throws Exception;
     public void eliminar(Persona per) throws Exception;
+    public void eliminarTodaBD() throws Exception;
 
     /**
      *

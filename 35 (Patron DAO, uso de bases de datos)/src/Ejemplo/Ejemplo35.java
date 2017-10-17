@@ -117,6 +117,20 @@ public class Ejemplo35 {
                    break;
                 case "5":
                    System.out.println("Se ELIMINARA TODA la BD. CUIDADO!");
+                   
+                   System.out.println("Esta seguro que desea eliminar TODOS LOS DATOS (S/N)");
+                   String eliminar = sc.next();
+                   
+                    if (eliminar.equalsIgnoreCase("s") || eliminar.equalsIgnoreCase("si")) {
+                        try {
+                        DAOPersona daoPersona = new DAOPersonaImp();
+                        daoPersona.eliminarTodaBD();
+                        } catch (Exception e) {
+                            System.out.println(e.getMessage());
+                        }
+                    }
+                    
+                   
                    break;
                    
                 case "0":
@@ -132,13 +146,7 @@ public class Ejemplo35 {
             
         //el ciclo se repetira mientras la opcion sea diferente a 0
         }while( opcion != "0");
-        
-        
-        
-        
-        
-        
-        
+   
     }
     
 }

@@ -85,8 +85,6 @@ public class DAOPersonaImp extends Conexion implements DAOPersona{
                 Persona p = new Persona();
                 p.setId(rs.getInt("id"));
                 p.setNombre(rs.getString("nombre"));
-                System.out.println(rs.getString("nombre"));
-                System.out.println(rs.getInt("id"));
                 lista.add(p);
             }
             
@@ -102,6 +100,22 @@ public class DAOPersonaImp extends Conexion implements DAOPersona{
         }
         
         return lista;
+        
+    }
+
+    @Override
+    public void eliminarTodaBD() throws Exception {
+        
+        try {
+            this.conectar();
+            PreparedStatement ps = this.conexion.prepareStatement("DELETE FROM PERSONA");
+            ps.executeUpdate();
+        } catch (Exception e) {
+            
+            throw e;
+        }finally{
+            this.cerrar();
+        }
         
     }
     
