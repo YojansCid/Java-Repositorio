@@ -28,7 +28,7 @@ es que se le pueden dar parametros al constructor*/
         obtiene una onstancia de la clase puede ser mas sencillo*/        
         Calendar calendario = Calendar.getInstance();
         
-        System.out.println(calendarioGragoriano.get(Calendar.DAY_OF_MONTH));
+        System.out.println(Calendar.DAY_OF_MONTH);
         System.out.println(calendario.getTime());
         
     }
