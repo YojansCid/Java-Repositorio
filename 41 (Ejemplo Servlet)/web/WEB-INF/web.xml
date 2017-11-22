@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    
+    <!---Con los servlets se puede indicar el nombre del servlet de diferente 
+    manera de como se accede a travez de la URL  -->
+    
+    
+    <servlet>
+        <!--- nombre de servlet -->
+        <servlet-name>NewServlet</servlet-name>
+        <!--- donde se ubica el servlet -->
+        <servlet-class>Servlet.servlet.NewServlet</servlet-class>
+    </servlet>
+    
+    <!--- Mapeo de servlet -->
+    <servlet-mapping>
+        <!--- como se llama -->
+        <servlet-name>NewServlet</servlet-name>
+        <!---a travez de que URL se accedera  -->
+        <url-pattern>/NewServlet</url-pattern>
+    </servlet-mapping>
+    
+    <session-config>
+        <!--- tiempos que duraran las sesiones -->
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
