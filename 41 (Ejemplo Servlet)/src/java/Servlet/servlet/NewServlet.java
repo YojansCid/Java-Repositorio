@@ -31,6 +31,11 @@ public class NewServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        /*Metodo para traer a travez del metodo POST el dato ingresado en el 
+        formulario, con el atributo action del formulario*/
+        
+        /*Algo asi como  nombre = $_POST["user"] en PHP*/
+        
         String user = request.getParameter("user");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
@@ -40,7 +45,9 @@ public class NewServlet extends HttpServlet {
             out.println("<title>Servlet NewServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet NewServlet en la URL " + request.getContextPath() + "dato Ingresado [" + user + "]</h1>");
+            /*imprime el dato del usuario concatenado en una linea de HTML e 
+            impreso en mayuscula con toUpperCase()*/
+            out.println("<h1>Servlet NewServlet en la URL " + request.getContextPath() + "dato Ingresado [" + user.toUpperCase() + "]</h1>");
             out.println("</body>");
             out.println("</html>");
         }
